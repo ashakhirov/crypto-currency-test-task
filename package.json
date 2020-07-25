@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "SPA to convert crypto coins",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "license": "MIT",
   "author": "Arafat Shahirov <ara.shahirov@gmail.com>",
@@ -42,6 +42,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
