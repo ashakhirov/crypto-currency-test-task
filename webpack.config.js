@@ -89,7 +89,7 @@ module.exports = {
       ? 'source-map'
       : false
     : isEnvDevelopment && 'cheap-module-source-map',
-  entry: ['react-hot-loader/patch', paths.index],
+  entry: paths.index,
   output: {
     path: paths.build,
     pathinfo: isEnvDevelopment,
@@ -166,7 +166,6 @@ module.exports = {
       .filter((ext) => useTypeScript || !ext.includes('ts')),
     plugins: [PnpWebpackPlugin],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       '~': paths.src,
     },
   },

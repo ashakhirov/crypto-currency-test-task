@@ -1,7 +1,5 @@
 {
   "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react",
     [
       "@babel/preset-env",
       {
@@ -17,7 +15,9 @@
           ]
         }
       }
-    ]
+    ],
+    "@babel/preset-typescript",
+    "@babel/preset-react"
   ],
   "plugins": [
     [
@@ -29,16 +29,6 @@
       },
       "core"
     ],
-    [
-      "babel-plugin-import",
-      {
-        "libraryName": "@material-ui/icons",
-        "libraryDirectory": "esm",
-        "camel2DashComponentName": false
-      },
-      "icons"
-    ],
-    "effector/babel-plugin",
-    "react-hot-loader/babel"
+    "effector/babel-plugin"
   ]
 }
