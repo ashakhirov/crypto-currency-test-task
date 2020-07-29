@@ -4,7 +4,6 @@ import { Container, Grid } from '@material-ui/core'
 
 import { Converter } from '~/features/currency-converter'
 import { Board } from '~/features/rate-board'
-import { AppGate } from './init'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,7 +18,6 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <AppGate />
       <Container className={classes.root} maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={8}>

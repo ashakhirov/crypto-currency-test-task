@@ -15,6 +15,8 @@ export const $currencies = createStore<Currency[]>([
   { value: 'USD', label: '$' },
   { value: 'RUB', label: 'Р' },
 ])
-export const $currency = createStore('USD')
 
-$currency.on(currencySelected, (_, selectedCurrency) => selectedCurrency)
+export const $currency = createStore('USD').on(
+  currencySelected,
+  (_, selectedCurrency) => selectedCurrency,
+)
