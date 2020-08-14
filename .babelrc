@@ -29,6 +29,15 @@
       },
       "core"
     ],
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "@material-ui/icons",
+        "libraryDirectory": "esm",
+        "camel2DashComponentName": false
+      },
+      "icons"
+    ],
     "effector/babel-plugin"
   ]
 }
