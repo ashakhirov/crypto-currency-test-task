@@ -20,11 +20,11 @@ export const App: React.FC = () => {
     <>
       <Container className={classes.root} maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item xs={8}>
-            <Board />
-          </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12}>
             <Converter />
+          </Grid>
+          <Grid item xs={12}>
+            <Board />
           </Grid>
         </Grid>
       </Container>

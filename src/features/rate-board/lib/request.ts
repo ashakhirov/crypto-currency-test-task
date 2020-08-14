@@ -21,7 +21,6 @@ const request: Request = async ({ method, path }) => {
     }),
   }
   const url = new URL(path, process.env.API_URL)
-  console.log(url.href)
 
   const response = await fetch(url.href, options)
 
