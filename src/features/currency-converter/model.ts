@@ -45,11 +45,11 @@ export const $outputCurrencyValue = createStore('0').on(
   (_, value) => value,
 )
 
-export const $inputCurrencyType = createStore('BTC')
+export const $inputCurrencyType = createStore('')
   .on(inputCurrencyTypeUpdated, (_, value) => value)
   .on(coinSelected, (_, coin) => coin.display.name)
 
-export const $outputCurrencyType = createStore('ETH').on(
+export const $outputCurrencyType = createStore('').on(
   outputCurrencyTypeUpdated,
   (_, value) => value,
 )
@@ -77,6 +77,10 @@ sample({
       inputCurrencyType,
       outputCurrencyType,
     )
+
+    if (outputCurrencyType === '') {
+      return '0'
+    }
 
     if (inputCurrencyValue !== '') {
       return String((Number(inputCurrencyValue) * inputPrice) / outputPrice)
@@ -106,6 +110,10 @@ sample({
       inputCurrencyType,
       outputCurrencyType,
     )
+
+    if (outputCurrencyType === '') {
+      return '0'
+    }
 
     if (outputCurrencyValue !== '') {
       return String((Number(outputCurrencyValue) * outputPrice) / inputPrice)

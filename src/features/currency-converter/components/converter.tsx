@@ -18,6 +18,8 @@ import {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
+      margin: '0 auto',
+      width: '70%',
       color: theme.palette.text.secondary,
     },
     formControl: {
@@ -64,6 +66,7 @@ export const Converter: React.FC = () => {
           className={classes.currencyType}
           size="small"
           variant="outlined"
+          label="From"
           select
           value={inputCurrencyType}
           onChange={handleInputCurrencyTypeUpdated}
@@ -87,6 +90,7 @@ export const Converter: React.FC = () => {
           className={classes.currencyType}
           size="small"
           variant="outlined"
+          label="To"
           select
           value={outputCurrencyType}
           onChange={handleOuptuCurrencyTypeUpdated}
