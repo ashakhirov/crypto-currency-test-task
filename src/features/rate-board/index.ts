@@ -1,2 +1,3 @@
 export { Board } from './components/board'
-export { getCryptoCoinsFx } from './model'
+export { getCryptoCoinsFx, coinSelected, $cryptoCoins } from './model'
+export type { CryptoCoins } from './model'

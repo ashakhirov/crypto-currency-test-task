@@ -10,29 +10,36 @@ import { fetchCryptoCoins } from './api'
 import { NormalizedCoin, Colors } from './types'
 import { transformCryptocoins } from './lib/transformer'
 
-type CryptoCoins = {
+export type CryptoCoins = {
   previousCoins: NormalizedCoin[]
   currentCoins: NormalizedCoin[]
 }
 
 type ColorsMap = Record<string, Colors>
 
+const REFRESH_TIMEOUT_MS = 50000
+const RESET_TIMEOUT_MS = 10000
+
 const cryptoCoinsUpdated = createEvent<NormalizedCoin[]>()
 const normalizeCryptoCoins = cryptoCoinsUpdated.prepend(transformCryptocoins)
+
+export const coinSelected = createEvent<NormalizedCoin>()
 
 export const getCryptoCoinsFx = createEffect({
   handler: fetchCryptoCoins,
 })
 
 const refreshTimeoutFx = createEffect({
-  handler: () => new Promise((resolve) => setTimeout(resolve, 50000)),
+  handler: () =>
+    new Promise((resolve) => setTimeout(resolve, REFRESH_TIMEOUT_MS)),
 })
 
 const resetTimeoutFx = createEffect({
-  handler: () => new Promise((resolve) => setTimeout(resolve, 12000)),
+  handler: () =>
+    new Promise((resolve) => setTimeout(resolve, RESET_TIMEOUT_MS)),
 })
 
-const $cryptoCoins = createStore<CryptoCoins>({
+export const $cryptoCoins = createStore<CryptoCoins>({
   previousCoins: [],
   currentCoins: [],
 }).on(cryptoCoinsUpdated, (state, newCoins) => {

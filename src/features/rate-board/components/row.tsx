@@ -3,11 +3,12 @@ import { useStoreMap } from 'effector-react'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 import { TableRow, TableCell, Grid, Typography } from '@material-ui/core'
 
-import { $priceColorsMap, $mktCapColorsMap } from '../model'
+import { $priceColorsMap, $mktCapColorsMap, coinSelected } from '../model'
 import { NormalizedCoin } from '../types'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    cursor: 'pointer',
     '& td': {
       borderRight: '1px solid #ddd',
     },
@@ -94,17 +95,17 @@ export const Row: React.FC<Props> = ({ coin, index }) => {
   const priceColor = useStoreMap({
     store: $priceColorsMap,
     keys: [coin.display.id],
-    fn: (colors, [id]) => colors[id] || 'defaultPrice',
+    fn: (colors, [id]) => colors[id] || 'default',
   })
 
   const mktCapColor = useStoreMap({
     store: $mktCapColorsMap,
     keys: [coin.display.id],
-    fn: (colors, [id]) => colors[id] || 'defaultMktCap',
+    fn: (colors, [id]) => colors[id] || 'default',
   })
 
   return (
-    <TableRow className={classes.root} hover>
+    <TableRow className={classes.root} hover onClick={() => coinSelected(coin)}>
       <TableCell className={classes.place} align="right">
         {index + 1}
       </TableCell>

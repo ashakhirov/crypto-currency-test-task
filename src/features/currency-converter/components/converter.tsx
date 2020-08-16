@@ -1,9 +1,19 @@
 import React from 'react'
-import { useList } from 'effector-react'
+import { useStore } from 'effector-react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Paper, TextField, MenuItem, FormControl } from '@material-ui/core'
+import { Paper, TextField, FormControl, MenuItem } from '@material-ui/core'
 
-import { $currencies, handleCurrencySelected } from '../model'
+import {
+  $currencies,
+  $inputCurrencyValue,
+  $outputCurrencyValue,
+  $inputCurrencyType,
+  $outputCurrencyType,
+  handleInputCurrencyTypeUpdated,
+  handleOuptuCurrencyTypeUpdated,
+  handleInputCurrencyValueUpdated,
+  handleOutputCurrencyValueUpdated,
+} from '../model'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,28 +44,60 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Converter: React.FC = () => {
   const classes = useStyles()
+  const currencies = useStore($currencies)
+  const inputCurrencyType = useStore($inputCurrencyType)
+  const outputCurrencyType = useStore($outputCurrencyType)
+  const inputCurrencyValue = useStore($inputCurrencyValue)
+  const outputCurrencyValue = useStore($outputCurrencyValue)
 
   return (
     <Paper className={classes.paper}>
-      {useList($currencies, (option) => (
-        <FormControl className={classes.formControl}>
-          <TextField
-            className={classes.currencyInput}
-            size="small"
-            variant="outlined"
-          />
-          <TextField
-            className={classes.currencyType}
-            size="small"
-            select
-            value={option.value}
-            onChange={handleCurrencySelected}
-            variant="outlined"
-          >
-            <MenuItem value={option.value}>{option.label}</MenuItem>
-          </TextField>
-        </FormControl>
-      ))}
+      <FormControl className={classes.formControl}>
+        <TextField
+          className={classes.currencyInput}
+          size="small"
+          variant="outlined"
+          value={inputCurrencyValue}
+          onChange={handleInputCurrencyValueUpdated}
+        />
+        <TextField
+          className={classes.currencyType}
+          size="small"
+          variant="outlined"
+          select
+          value={inputCurrencyType}
+          onChange={handleInputCurrencyTypeUpdated}
+        >
+          {currencies.map((currency, idx) => (
+            <MenuItem key={idx} value={currency}>
+              {currency}
+            </MenuItem>
+          ))}
+        </TextField>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <TextField
+          className={classes.currencyInput}
+          size="small"
+          variant="outlined"
+          value={outputCurrencyValue}
+          onChange={handleOutputCurrencyValueUpdated}
+        />
+        <TextField
+          className={classes.currencyType}
+          size="small"
+          variant="outlined"
+          select
+          value={outputCurrencyType}
+          onChange={handleOuptuCurrencyTypeUpdated}
+        >
+          {currencies.map((currency, idx) => (
+            <MenuItem key={idx} value={currency}>
+              {currency}
+            </MenuItem>
+          ))}
+        </TextField>
+      </FormControl>
     </Paper>
   )
 }
