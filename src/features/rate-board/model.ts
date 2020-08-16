@@ -60,8 +60,6 @@ export const $currentCryptoCoins = $cryptoCoins.map(
   ({ currentCoins }) => currentCoins,
 )
 
-export const $isLoading = getCryptoCoinsFx.pending
-
 export const $priceColorsMap = createStore<ColorsMap>({})
   .on($cryptoCoins, (_, payload) => createColorsMap(payload, 'price'))
   .reset(resetTimeoutFx.done)

@@ -278,11 +278,11 @@ module.exports = {
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, '..', 'public', 'favicon.ico'),
+            from: path.resolve(__dirname, 'public', 'favicon.ico'),
             to: './',
           },
           {
-            from: path.resolve(__dirname, '..', 'public', 'manifest.json'),
+            from: path.resolve(__dirname, 'public', 'manifest.json'),
             to: './',
           },
         ],
