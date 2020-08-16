@@ -1,21 +1,30 @@
-# Crypto currency SPA test task
+# Тестовое задание Crypto currency
 
-## Available Scripts
+## Техническое задание
 
-In the project directory, you can run:
+Приложение должно представлять собой два основных блока:
 
-### `npm start`
+- Список валют, и их котировки по отношению к доллару
+- Блок конвертации одной валюты в другую.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+### Список валют
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Таблица с перечнем крипто-валют, и их стоимости в USD.
+Клик на любой строчки автоматически заполняет колонку "Валюта" в блоке "Блок конвертации".
+Список валют должен обновляться в realtime, изменения котировок должны визуально выделяться так, чтобы было понятно, растет котировка или падает.
 
-### `npm run build`
+### Блок конвертации
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Состоит из двух селекторов валют, и двух полей ввода.
+Хороший пример - конвертер валют гугла (загуглите 1 usd to gbp).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Доступные скрипты
+
+#### `npm start`
+
+Запускаем локально в дев режиме с помощью кастомной сборки Webpack.<br>
+[http://localhost:8080](http://localhost:8080).
+
+#### `npm run build`
+
+Билдит приложение для продакшена в папку `build`.
